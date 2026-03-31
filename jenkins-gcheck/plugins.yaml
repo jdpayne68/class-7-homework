@@ -1,0 +1,45 @@
+plugins:
+  # Core / common
+  - artifactId: "configuration-as-code"
+  - artifactId: "credentials"
+  - artifactId: "credentials-binding"
+  - artifactId: "git"
+  - artifactId: "workflow-aggregator" # Pipeline
+  - artifactId: "ansicolor"
+  # GitHub
+  - artifactId: "github" # GitHub Integration
+  - artifactId: "github-oauth" # GitHub Authentication
+  - artifactId: "pipeline-github" # Pipeline: GitHub
+  - artifactId: "pipeline-githubnotify-step"
+  # AWS
+  - artifactId: "aws-credentials"
+  - artifactId: "pipeline-aws" # Pipeline: AWS Steps
+  - artifactId: "ec2" # Amazon EC2
+  - artifactId: "amazon-ecs" # Amazon ECS / Fargate
+  - artifactId: "codedeploy" # AWS CodeDeploy
+  - artifactId: "aws-lambda"
+  - artifactId: "aws-codebuild"
+  - artifactId: "aws-bucket-credentials"
+  - artifactId: "aws-secrets-manager-secret-source"
+  - artifactId: "aws-codepipeline"
+  - artifactId: "configuration-as-code-secret-ssm"
+  - artifactId: "jenkins-cloudformation-plugin" # CloudFormation
+  - artifactId: "aws-sam"
+  # Terraform
+  - artifactId: "terraform"
+  # Google / Kubernetes
+  - artifactId: "kubernetes"
+  - artifactId: "google-storage-plugin" # Google Cloud Storage
+  - artifactId: "google-kubernetes-engine"
+  - artifactId: "google-oauth-plugin" # Google auth / OAuth support
+  - artifactId: "pipeline-gcp"
+  # DevSecOps / quality
+  - artifactId: "snyk-security-scanner"
+  - artifactId: "sonar"
+  - artifactId: "aqua-security-scanner"
+  - artifactId: "aqua-microscanner"
+  - artifactId: "aqua-serverless"
+  # Build / publish
+  - artifactId: "maven-plugin" # Maven Integration
+  - artifactId: "pipeline-maven"
+  - artifactId: "publish-over-ssh"
