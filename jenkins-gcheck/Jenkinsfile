@@ -15,25 +15,29 @@ pipeline {
 
         stage('Terraform Init') {
             steps {
-                withCredentials([[
-                    $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'jenkins-user'
-                ]]) {
-                    sh 'terraform init'
+                dir('jenkins-gcheck') {
+                    withCredentials([[
+                        $class: 'AmazonWebServicesCredentialsBinding',
+                        credentialsId: 'jenkins-user'
+                    ]]) {
+                        sh 'terraform init'
+                    }
                 }
             }
         }
 
         stage('Terraform Apply') {
             steps {
-                withCredentials([[
-                    $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'jenkins-user'
-                ]]) {
-                    sh '''
-                        terraform plan -out=tfplan
-                        terraform apply -auto-approve tfplan
-                    '''
+                dir('jenkins-gcheck') {
+                    withCredentials([[
+                        $class: 'AmazonWebServicesCredentialsBinding',
+                        credentialsId: 'jenkins-user'
+                    ]]) {
+                        sh '''
+                            terraform plan -out=tfplan
+                            terraform apply -auto-approve tfplan
+                        '''
+                    }
                 }
             }
         }
@@ -52,15 +56,18 @@ pipeline {
                             )
                         ]
                     )
+
                     if (destroyChoice == 'yes') {
-                        withCredentials([[
-                            $class: 'AmazonWebServicesCredentialsBinding',
-                            credentialsId: 'jenkins-user'
-                        ]]) {
-                            sh 'terraform destroy -auto-approve'
+                        dir('jenkins-gcheck') {
+                            withCredentials([[
+                                $class: 'AmazonWebServicesCredentialsBinding',
+                                credentialsId: 'jenkins-user'
+                            ]]) {
+                                sh 'terraform destroy -auto-approve'
+                            }
                         }
                     } else {
-                        echo "Skipping destroy"
+                        echo 'Skipping destroy'
                     }
                 }
             }
