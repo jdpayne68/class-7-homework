@@ -1,0 +1,30 @@
+# Terraform working directory and state
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.*
+terraform/*.tfplan
+terraform/tfplan*
+terraform/terraform.tfvars
+terraform/*.auto.tfvars
+terraform/crash.log
+terraform/crash.*.log
+
+# Generated Lambda deployment packages
+lambda/**/*.zip
+
+# Python-generated files
+__pycache__/
+*.py[cod]
+.venv/
+
+# Local authentication and secret data
+auth.json
+.env
+.env.*
+!.env.example
+*token*.json
+*.token
+
+# Temporary files
+.DS_Store
+*.tmp
